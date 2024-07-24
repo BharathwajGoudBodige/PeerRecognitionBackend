@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.8</version>
+		<version>3.0.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.org.peerrecognition</groupId>
 	<artifactId>Peer-Recoginition-Application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Peer-Recoginition-Application</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Peer Recognition Appplication</description>
 	<url/>
 	<licenses>
 		<license/>
