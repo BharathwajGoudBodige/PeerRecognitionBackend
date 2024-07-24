@@ -46,7 +46,7 @@ public class RecognitionServiceImpl implements RecognitionService{
 		RecognitionDto recognizedDto = new RecognitionDto();
 		recognizedDto.setBadgeName(recognized.getBadges().getBadgeName());
 		recognizedDto.setGiverId(recognized.getGiver().getEmployeeId());
-		recognizedDto.setReceivedId(recognized.getReceiver().getEmployeeId());
+		recognizedDto.setReceiverId(recognized.getReceiver().getEmployeeId());
 		recognizedDto.setComment(recognized.getComment());
 		
 		

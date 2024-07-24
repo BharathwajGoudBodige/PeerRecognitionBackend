@@ -1,6 +1,7 @@
 package com.org.peerrecognition.service.impl;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -8,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.org.peerrecognition.dto.EmployeeDto;
+import com.org.peerrecognition.dto.EmployeeRecognitionDto;
+import com.org.peerrecognition.dto.RecognitionDto;
 import com.org.peerrecognition.exception.EmployeesNotFoundException;
 import com.org.peerrecognition.exception.ResourceNotFoundException;
 import com.org.peerrecognition.model.Employee;
+import com.org.peerrecognition.model.Recognition;
 import com.org.peerrecognition.repository.EmployeeRepository;
 import com.org.peerrecognition.service.EmployeeService;
 import com.org.peerrecognition.util.NumberUtils;
@@ -83,6 +87,29 @@ public class EmployeeServiceImpl implements EmployeeService{
 		}
 		
 	}
+
+	@Override
+	public EmployeeRecognitionDto getRecognitions(int employeeId) {
+		Employee receivedEmployee = this.employeeRepo.findById(employeeId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee","Id",employeeId));
+		EmployeeRecognitionDto recognitionDto = new EmployeeRecognitionDto();
+		recognitionDto.setEmployeeId(receivedEmployee.getEmployeeId());
+		recognitionDto.setEmployeeName(receivedEmployee.getEmployeeName());
+		recognitionDto.setEmail(receivedEmployee.getEmail());
+		
+		Set<RecognitionDto> recognitions = receivedEmployee.getBadgesReceived()
+				.stream()
+				.map((recognition) -> this.modelMapper.map(recognition, RecognitionDto.class)).collect(Collectors.toSet());
+		
+		recognitionDto.setBadgesReceived(recognitions);
+		return recognitionDto;
+	}
+	
+	public RecognitionDto recognitionToDto(Recognition recognition)
+	{
+		return this.modelMapper.map(recognition, RecognitionDto.class);
+	}
+
 
 
 }

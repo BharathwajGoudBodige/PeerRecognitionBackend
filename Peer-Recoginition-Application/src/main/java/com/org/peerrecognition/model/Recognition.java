@@ -30,7 +30,7 @@ public class Recognition {
 	private Employee giver;
 	
 	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-	@JoinColumn(name = "reciver_id")
+	@JoinColumn(name = "receiver_id")
 	private Employee receiver;
 	
 	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})

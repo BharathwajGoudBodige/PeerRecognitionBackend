@@ -5,17 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RecognitionDto {
+public class BadgeDto {
 	
-	private int giverId;
-	private int receiverId;
+	private int badgeId;
 	private String badgeName;
-	private String comment;
-	private BadgeDto badges;
 
 }
